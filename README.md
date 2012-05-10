@@ -215,3 +215,9 @@ var factory = Backbone.Factory({
 	}
 });
 ```
+
+## Requirements
+As this is an extension to Backbone, the Underscore and Backbone libraries are required. 
+
+jQuery is also required for its extend() method. This is a temporary requirement that will be removed once I write my own deep extend function.
+
