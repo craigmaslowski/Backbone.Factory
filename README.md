@@ -1,4 +1,4 @@
-backbone.factory
+Backbone.Factory
 ================
 
 Adds a Factory object to Backbone which ensures that Backbone collections, models, routers, and views will contain certain properties.
