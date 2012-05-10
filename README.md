@@ -104,13 +104,19 @@ You could reference the broker from the global object.
 ```JavaScript
 var MyModel = Backbone.Model.extend({
 	initialize: function() {
-		window.broker.subscribe('someEvent'); // reads ok, but there must be a better way
+		// reads ok, but there must be a better way
+		window.broker.subscribe('someEvent', function() {
+			// do something
+		}); 
 	}
 });
 
 var MyOtherModel = Backbone.Model.extend({
 	initialize: function() {
-		window.broker.subscribe('someEvent'); // reads ok, but there must be a better way
+		// reads ok, but there must be a better way
+		window.broker.subscribe('someEvent', function() {
+			// do something
+		}); 
 	}
 });
 ```
@@ -119,13 +125,19 @@ You could pass the broker to the Backbone object as an option.
 ```JavaScript
 var MyModel = Backbone.Model.extend({});
 	initialize: function() {
-		this.options.broker.subscribe('someEvent'); // doesn't read well
+		// doesn't read well
+		this.options.broker.subscribe('someEvent', function() {
+			// do something
+		}); 
 	}
 });
 
 var MyOtherModel = Backbone.Model.extend({
 	initialize: function() {
-		this.options.broker.subscribe('someEvent'); // doesn't read well
+		// doesn't read well
+		this.options.broker.subscribe('someEvent', function() {
+			// do something
+		}); 
 	}
 });
 
@@ -140,7 +152,10 @@ var MyModel = Backbone.Model.extend({
 	broker: window.broker, // not very DRY
 
 	initialize: function() {
-		this.broker.subscribe('someEvent'); // reads well
+		// reads well
+		this.broker.subscribe('someEvent', function() {
+			// do something
+		}); 
 	}
 });
 
@@ -148,7 +163,10 @@ var MyOtherModel = Backbone.Model.extend({
 	broker: window.broker, // not very DRY
 
 	initialize: function() {
-		this.broker.subscribe('someEvent'); // reads well
+		// reads well
+		this.broker.subscribe('someEvent', function() {
+			// do something
+		}); 
 	}
 });
 ```
@@ -164,18 +182,22 @@ var factory = Backbone.Factory({
 
 var MyModel = factory.Model.extend({
     initialize: function () {
-        this.broker.subscribe('someEvent'); // like magic!
+        this.broker.subscribe('someEvent', function() {
+			// do something
+		}); // like magic!
     }
 });
 
 var MyOtherModel = factory.Model.extend({
     initialize: function () {
-        this.broker.subscribe('someEvent'); // shows up here too!
+        this.broker.subscribe('someEvent', function() {
+			// do something
+		}); // shows up here too!
     }
 });
 ```
 
-An added benefit to using Backbone.Factory is the ability to easily mock these properties when testing.
+An added benefit to using Backbone.Factory is the ability to easily mock these properties when testing without changing any of your Backbone code.
 
 ```JavaScript
 var mockBroker = {
@@ -192,7 +214,4 @@ var factory = Backbone.Factory({
 		broker: mockBroker
 	}
 });
-
-// the rest of your test code here...
-
 ```
