@@ -1,4 +1,4 @@
-var Backbone.Factory = function (options) {
+Backbone.Factory = function (options) {
     var defaults = {
             all: {},
             collection: {},
