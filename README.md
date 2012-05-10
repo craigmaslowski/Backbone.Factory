@@ -174,3 +174,25 @@ var MyOtherModel = factory.Model.extend({
     }
 });
 ```
+
+An added benefit to using Backbone.Factory is the ability to easily mock these properties when testing.
+
+```JavaScript
+var mockBroker = {
+	subscribe: function(channel, callback) {
+		var mockResponse = {
+			some: 'mock data'
+		}
+		callback(mockResponse);
+	};
+}
+
+var factory = Backbone.Factory({ 
+	all: {
+		broker: mockBroker
+	}
+});
+
+// the rest of your test code here...
+
+```
