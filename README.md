@@ -145,7 +145,7 @@ var myModel = new MyModel({}, {broker: window.broker}); // not very DRY
 var myOtherModel = new MyOtherModel({}, {broker: window.broker}); // not very DRY
 ```
 
-You could hardcode a property which references the var from the global object:
+You could hardcode a property which references the broker from the global object:
 
 ```JavaScript
 var MyModel = Backbone.Model.extend({
@@ -197,7 +197,7 @@ var MyOtherModel = factory.Model.extend({
 });
 ```
 
-An added benefit to using Backbone.Factory is the ability to easily mock these properties when testing without changing any of your Backbone code.
+An added benefit to using Backbone.Factory is the ability to easily mock the broker when testing without changing any of your Backbone code.
 
 ```JavaScript
 var mockBroker = {
