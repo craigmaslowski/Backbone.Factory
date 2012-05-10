@@ -5,7 +5,7 @@ Adds a Factory object to Backbone which ensures that Backbone collections, model
 
 ## What does it do?
 
-Backbone.Factory allows you to define properties which Backbone all objects (Collections, Models, Routers, and Views) should include.
+Backbone.Factory allows you to define properties which Backbone objects (Collections, Models, Routers, and Views) will include.
 
 ```JavaScript
 var factory = Backbone.Factory({
@@ -16,13 +16,13 @@ var factory = Backbone.Factory({
 
 var MyModel = factory.Model.extend({
 	initialize: function () {
-		this.broker.subscribe('someEvent'); // like magic!
+		console.log(this.everyWhereProperty); // 'My everywhere property'
 	}
 });
 
 var MyView = factory.View.extend({
 	initialize: function () {
-		this.broker.subscribe('someOtherEvent'); // it shows up here too
+		console.log(this.everyWhereProperty); // 'My everywhere property'
 	}
 });
 ```
@@ -150,5 +150,27 @@ var MyOtherModel = Backbone.Model.extend({
 	initialize: function() {
 		this.broker.subscribe('someEvent'); // reads well
 	}
+});
+```
+
+Here's how it would look using Backbone.Factory
+
+```JavaScript
+var factory = Backbone.Factory({
+    all: {
+        broker: window.broker
+    }
+});
+
+var MyModel = factory.Model.extend({
+    initialize: function () {
+        this.broker.subscribe('someEvent'); // like magic!
+    }
+});
+
+var MyOtherModel = factory.Model.extend({
+    initialize: function () {
+        this.broker.subscribe('someEvent'); // shows up here too!
+    }
 });
 ```
