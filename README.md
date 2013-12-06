@@ -1,3 +1,5 @@
+THIS REPO IS NO LONGER SUPPORTED
+
 Backbone.Factory
 ================
 
