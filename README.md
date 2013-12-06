@@ -3,6 +3,7 @@
 See these two gists for code that accomplishes the same task through a mixin based approach.
 
 [Backbone.mixin](https://gist.github.com/craigmaslowski/4449150)
+
 [Backbone.puree](https://gist.github.com/craigmaslowski/5759511)
 
 Backbone.Factory
